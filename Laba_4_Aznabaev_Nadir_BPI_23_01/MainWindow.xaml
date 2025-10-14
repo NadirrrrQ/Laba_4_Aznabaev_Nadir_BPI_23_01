@@ -7,10 +7,11 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800" MinHeight="400" MinWidth="750">
     <Grid>
+        
         <Menu>
-            <MenuItem x:Name="Employee" Header="Сотрудники" Click="Employee_OnClick"/>
+            <MenuItem x:Name="Employee" Header="Сотрудники" Click="Employee_OnClick" Width="400"/>
 
-            <MenuItem x:Name="Role" Header="Должности" Click="Role_OnClick"/>
+            <MenuItem x:Name="Role" Header="Должности" Click="Role_OnClick" Width="400" />
         </Menu>
     </Grid>
 </Window>

@@ -27,11 +27,13 @@ namespace Laba_4_Aznabaev_Nadir_BPI_23_01
         }
         private void Employee_OnClick(object sender, RoutedEventArgs e)
         {
-            WindowEmployee wEmployee = new WindowEmployee(); wEmployee.Show();
+            WindowEmployee wEmployee = new WindowEmployee(); 
+            wEmployee.Show();
         }
         private void Role_OnClick(object sender, RoutedEventArgs e)
         {
-            WindowRole wRole = new WindowRole(); wRole.Show();
+            WindowRole wRole = new WindowRole();
+            wRole.Show();
         }
 
     }
