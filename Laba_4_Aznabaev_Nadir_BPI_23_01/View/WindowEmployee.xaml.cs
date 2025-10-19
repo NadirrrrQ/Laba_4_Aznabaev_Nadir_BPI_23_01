@@ -27,12 +27,12 @@ namespace Laba_4_Aznabaev_Nadir_BPI_23_01.View
         {
             InitializeComponent();
             PersonViewModel Person = new PersonViewModel();
-
+            DataContext = new PersonViewModel();
 
             RoleViewModel Role = new RoleViewModel();
 
             List<Role> roles = new List<Role>();
-            ObservableCollection<PersonDPO> persons = new ObservableCollection<PersonDPO>();
+            ObservableCollection<PersonDpo> persons = new ObservableCollection<PersonDpo>();
 
             foreach (Role r in Role.ListRole)
             {
@@ -43,7 +43,7 @@ namespace Laba_4_Aznabaev_Nadir_BPI_23_01.View
             {
                 finder = new FindRole(p.RoleId);
                 Role rol = roles.Find(new Predicate<Role>(finder.RolePredicate));
-                persons.Add(new PersonDPO
+                persons.Add(new PersonDpo
                 {
                     Id = p.Id,
                     Role = rol.NameRole,

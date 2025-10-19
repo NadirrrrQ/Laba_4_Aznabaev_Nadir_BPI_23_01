@@ -10,9 +10,9 @@
 
     <StackPanel>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-            <Button Content="Добавить" Width="100" Click="Add_Click" Margin="5"/>
-            <Button Content="Редактировать" Width="100" Margin="5" Click="Edit_Click"/>
-            <Button Content="Удалить" Width="100" Margin="5" Click="Delet_Click"/>
+            <Button Content="Добавить" Width="100" Click="Add_Click" Margin="5" Command="{Binding AddPerson}"/>
+            <Button Content="Редактировать" Width="100" Margin="5" Click="Edit_Click" Command="{Binding EditPerson}"/>
+            <Button Content="Удалить" Width="100" Margin="5" Click="Delet_Click" Command="{Binding DeletePerson}"/>
         </StackPanel>
         <ListView x:Name="Employee">
             <ListView.View>

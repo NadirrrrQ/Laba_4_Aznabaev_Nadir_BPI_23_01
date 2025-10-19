@@ -9,9 +9,8 @@
     <Grid>
         
         <Menu>
-            <MenuItem x:Name="Employee" Header="Сотрудники" Click="Employee_OnClick" Width="400"/>
-
-            <MenuItem x:Name="Role" Header="Должности" Click="Role_OnClick" Width="400" />
+            <MenuItem x:Name="Employee" Header="Сотрудники" Click="Employee_OnClick" Width="200"/>
+            <MenuItem x:Name="Role" Header="Должности" Click="Role_OnClick" Width="200" />
         </Menu>
     </Grid>
 </Window>

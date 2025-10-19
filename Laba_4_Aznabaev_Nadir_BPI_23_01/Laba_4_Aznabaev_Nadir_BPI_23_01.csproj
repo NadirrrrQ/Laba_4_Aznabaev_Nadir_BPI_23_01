@@ -35,6 +35,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="JetBrains.Annotations, Version=4242.42.42.42, Culture=neutral, PublicKeyToken=1010a0d8d6380325, processorArchitecture=MSIL">
+      <HintPath>..\packages\JetBrains.Annotations.2025.2.2\lib\net20\JetBrains.Annotations.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -56,6 +59,8 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Helper\FindRole.cs" />
+    <Compile Include="Helper\RelayCommand.cs" />
+    <Compile Include="INotifyPropertyChanged.cs" />
     <Compile Include="Model\PersonDPO.cs" />
     <Compile Include="ViewModel\PersonViewModel.cs" />
     <Compile Include="ViewModel\RoleViewModel.cs" />
@@ -64,6 +69,12 @@
     </Compile>
     <Compile Include="View\WindowRole.xaml.cs">
       <DependentUpon>WindowRole.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WindowNewEmployee.xaml.cs">
+      <DependentUpon>WindowNewEmployee.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WindowNewRole.xaml.cs">
+      <DependentUpon>WindowNewRole.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -82,6 +93,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\WindowRole.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WindowNewEmployee.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WindowNewRole.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -106,6 +125,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
