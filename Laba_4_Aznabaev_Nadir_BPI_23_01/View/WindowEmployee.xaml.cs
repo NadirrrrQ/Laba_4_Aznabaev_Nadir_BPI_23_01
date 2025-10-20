@@ -27,9 +27,10 @@ namespace Laba_4_Aznabaev_Nadir_BPI_23_01.View
         {
             InitializeComponent();
             PersonViewModel Person = new PersonViewModel();
-            DataContext = new PersonViewModel();
 
             RoleViewModel Role = new RoleViewModel();
+
+            DataContext = new PersonViewModel();
 
             List<Role> roles = new List<Role>();
             ObservableCollection<PersonDpo> persons = new ObservableCollection<PersonDpo>();
@@ -56,19 +57,6 @@ namespace Laba_4_Aznabaev_Nadir_BPI_23_01.View
             Employee.ItemsSource = persons;
         }
 
-        private void Add_Click(object sender, RoutedEventArgs e)
-        {
 
-        }
-
-        private void Edit_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Delet_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
     }
 }

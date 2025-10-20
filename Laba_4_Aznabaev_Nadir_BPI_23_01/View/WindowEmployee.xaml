@@ -3,18 +3,18 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Laba_4_Aznabaev_Nadir_BPI_23_01.View"
+        xmlns:local="clr-namespace:Laba_4_Aznabaev_Nadir_BPI_23_01.View" xmlns:viewmodel="clr-namespace:Laba_4_Aznabaev_Nadir_BPI_23_01.ViewModel" d:DataContext="{d:DesignInstance Type=viewmodel:PersonViewModel}"
         mc:Ignorable="d"
         Title="Сотрудники" Height="450" Width="800" MinHeight="400" MinWidth="750">
 
 
     <StackPanel>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-            <Button Content="Добавить" Width="100" Click="Add_Click" Margin="5" Command="{Binding AddPerson}"/>
-            <Button Content="Редактировать" Width="100" Margin="5" Click="Edit_Click" Command="{Binding EditPerson}"/>
-            <Button Content="Удалить" Width="100" Margin="5" Click="Delet_Click" Command="{Binding DeletePerson}"/>
+            <Button Content="Добавить" Width="100" Margin="5" Command="{Binding AddPerson}"/>
+            <Button Content="Редактировать" Width="100" Margin="5" Command="{Binding EditPerson}"/>
+            <Button Content="Удалить" Width="100" Margin="5" Command="{Binding DeletePerson}"/>
         </StackPanel>
-        <ListView x:Name="Employee">
+        <ListView x:Name="Employee" ItemsSource="{Binding ListPersonDpo}" SelectedItem="{Binding SelectedPersonDpo}">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Код" Width="50" DisplayMemberBinding="{Binding Id}"/>

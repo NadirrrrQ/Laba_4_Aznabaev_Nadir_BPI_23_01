@@ -19,6 +19,9 @@ namespace Laba_4_Aznabaev_Nadir_BPI_23_01.ViewModel
     {
         public ObservableCollection<Role> ListRole { get; set; } = new ObservableCollection<Role>();
         public event PropertyChangedEventHandler PropertyChanged;
+
+        private RelayCommand deleteRole;
+        private Role selectedRole;
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
@@ -77,7 +80,7 @@ namespace Laba_4_Aznabaev_Nadir_BPI_23_01.ViewModel
         }
 
         private RelayCommand addRole;
-        private RelayCommand AddRole
+        public RelayCommand AddRole
         {
             get
             {
@@ -90,12 +93,16 @@ namespace Laba_4_Aznabaev_Nadir_BPI_23_01.ViewModel
                     };
 
                     int maxIdRole = MaxId() + 1;
-                    Role role = new Role { Id = maxIdRole }; wnRole.DataContext = role;
+                    Role role = new Role { Id = maxIdRole };
+                    
+                    wnRole.DataContext = role;
+
                     if (wnRole.ShowDialog() == true)
                     {
                         ListRole.Add(role);
+                        SelectedRole = role;
+
                     }
-                    SelectedRole = role;
                 }));
             }
 
@@ -104,7 +111,8 @@ namespace Laba_4_Aznabaev_Nadir_BPI_23_01.ViewModel
 
 
 
-        private RelayCommand editRole; public RelayCommand EditRole
+        private RelayCommand editRole; 
+        public RelayCommand EditRole
         {
             get
             {
@@ -112,22 +120,25 @@ namespace Laba_4_Aznabaev_Nadir_BPI_23_01.ViewModel
                 (editRole = new RelayCommand(obj =>
                 {
                     WindowNewRole wnRole = new WindowNewRole
-                    { Title = "Редактирование должности", }; 
+                    { 
+                        Title = "Редактирование должности",
+                    }; 
+
                     Role role = SelectedRole;
                     Role tempRole = new Role();
                     tempRole = role.ShallowCopy(); 
                     wnRole.DataContext = tempRole; 
+
+
                     if (wnRole.ShowDialog() == true)
                     {
-                        // сохранение данных в оперативной памяти
                         role.NameRole = tempRole.NameRole;
                     }
                 }, (obj) => SelectedRole != null && ListRole.Count > 0));
             }
         }
 
-        private RelayCommand deleteRole;
-        private Role selectedRole;
+
 
         public RelayCommand DeleteRole
         {
@@ -141,6 +152,7 @@ namespace Laba_4_Aznabaev_Nadir_BPI_23_01.ViewModel
                     if (result == MessageBoxResult.OK)
                     {
                         ListRole.Remove(role);
+                        SelectedRole = null;
                     }
                 }, (obj) => SelectedRole != null && ListRole.Count > 0));
             }

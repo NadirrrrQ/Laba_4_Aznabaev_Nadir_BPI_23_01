@@ -1,4 +1,5 @@
-﻿using Laba_4_Aznabaev_Nadir_BPI_23_01.ViewModel;
+﻿using Laba_4_Aznabaev_Nadir_BPI_23_01.Model;
+using Laba_4_Aznabaev_Nadir_BPI_23_01.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;

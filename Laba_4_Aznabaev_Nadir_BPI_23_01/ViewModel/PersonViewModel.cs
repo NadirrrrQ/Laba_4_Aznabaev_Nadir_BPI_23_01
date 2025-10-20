@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 
+
 namespace Laba_4_Aznabaev_Nadir_BPI_23_01.ViewModel
 {
     public class PersonViewModel : INotifyPropertyChanged
@@ -50,7 +51,8 @@ namespace Laba_4_Aznabaev_Nadir_BPI_23_01.ViewModel
         {
             foreach (var person in ListPerson)
             {
-                PersonDpo p = new PersonDpo(); p = p.CopyFromPerson(person); ListPersonDpo.Add(p);
+                PersonDpo p = new PersonDpo(); p = p.CopyFromPerson(person);
+                ListPersonDpo.Add(p);
             }
             return ListPersonDpo;
         }
@@ -67,37 +69,38 @@ namespace Laba_4_Aznabaev_Nadir_BPI_23_01.ViewModel
             return max;
         }
         private RelayCommand addPerson;
-        private RelayCommand AddPerson
+        public RelayCommand AddPerson
         {
             get
             {
-                return addPerson ??
-                (addPerson = new RelayCommand(obj =>
+                return addPerson ?? (addPerson = new RelayCommand(obj =>
                 {
-                WindowNewEmployee wnPerson = new WindowNewEmployee
-                {
-                    Title = "Новый сотрудник"
-                };
-                {
-                    int maxIdPerson = MaxId() + 1;
-                    PersonDpo per = new PersonDpo
+                    WindowNewEmployee wnPerson = new WindowNewEmployee
                     {
-                        Id = maxIdPerson,
-                        Birthday = DateTime.Now
+                        Title = "Новый сотрудник"
                     };
-                    wnPerson.DataContext = per;
-                    if (wnPerson.ShowDialog() == true)
                     {
-                        Role r = (Role)wnPerson.CbRole.SelectedValue;
-                        per.RoleName = r.NameRole;
-                        ListPersonDpo.Add(per);
-                        Person p = new Person();
-                        p = p.CopyFromPersonDPO(per); 
-                        ListPerson.Add(p);
+                        int maxIdPerson = MaxId() + 1;
+                        PersonDpo per = new PersonDpo
+                        {
+                            Id = maxIdPerson,
+                            Birthday = DateTime.Now
+                        };
+                        wnPerson.DataContext = per;
+                        if (wnPerson.ShowDialog() == true)
+                        {
+                            Role r = (Role)wnPerson.CbRole.SelectedValue;
+                            per.RoleName = r.NameRole;
+                            ListPersonDpo.Add(per);
+
+                            Person p = new Person();
+                            p = p.CopyFromPersonDPO(per);
+                            ListPerson.Add(p);
+                        }
                     }
-                },
-                (obj) => true));
+                }, (obj) => true));
             }
+            
         }
         private RelayCommand editPerson; public RelayCommand EditPerson
         {
@@ -120,14 +123,16 @@ namespace Laba_4_Aznabaev_Nadir_BPI_23_01.ViewModel
                         personDpo.FirstName = tempPerson.FirstName;
                         personDpo.LastName = tempPerson.LastName;
                         personDpo.Birthday = tempPerson.Birthday;
-                        FindPerson finder = new FindPerson(personDpo.Id);
-                        List<Person> listPerson = ListPerson.ToList(); Person p = listPerson.Find(new Predicate<Person > (finder.PersonPredicate));
-                        p = p.CopyFromPersonDPO(personDpo);
+                     //   FindPerson finder = new FindPerson(personDpo.Id);
+                        List<Person> listPerson = ListPerson.ToList(); 
+                       /// Person p = listPerson.Find(new Predicate<Person > (finder.PersonPredicate));
+                      //  p = p.CopyFromPersonDPO(personDpo);
                     }
                 }, (obj) => SelectedPersonDpo != null && ListPersonDpo.Count > 0));
             }
         }
-        private RelayCommand deletePerson; public RelayCommand DeletePerson
+        private RelayCommand deletePerson; 
+        public RelayCommand DeletePerson
         {
             get
             {
@@ -140,8 +145,9 @@ namespace Laba_4_Aznabaev_Nadir_BPI_23_01.ViewModel
                     if (result == MessageBoxResult.OK)
                     {
                         ListPersonDpo.Remove(person);
-                        ListPerson<Person> Person per = new Person();
-                        per = per.CopyFromPersonDPO(person); ListPerson.Remove(per);
+                        Person per = new Person();
+                        per = per.CopyFromPersonDPO(person); 
+                        ListPerson.Remove(per);
                     }
                 }, (obj) => SelectedPersonDpo != null && ListPersonDpo.Count > 0));
             }

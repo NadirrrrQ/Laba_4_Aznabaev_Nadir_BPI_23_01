@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Laba_4_Aznabaev_Nadir_BPI_23_01.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -24,6 +25,32 @@ namespace Laba_4_Aznabaev_Nadir_BPI_23_01.Model
             LastName = lastName;
             Birthday = birthday;
         }
+
+        public Person CopyFromPersonDPO(PersonDpo personDpo)
+        {
+            RoleViewModel vmRole = new RoleViewModel();
+            int roleId = 0;
+
+            foreach (var r in vmRole.ListRole)
+            {
+                if (r.NameRole == personDpo.RoleName)
+                {
+                    roleId = r.Id;
+                    break;
+                }
+            }
+
+            return new Person
+            {
+                Id = personDpo.Id,
+                RoleId = roleId,
+                FirstName = personDpo.FirstName,
+                LastName = personDpo.LastName,
+                Birthday = personDpo.Birthday
+            };
+        }
+
+
     }
 
 }
