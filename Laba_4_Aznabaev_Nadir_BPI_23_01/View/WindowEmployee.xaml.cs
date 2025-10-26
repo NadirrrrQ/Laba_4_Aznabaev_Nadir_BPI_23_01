@@ -26,35 +26,12 @@ namespace Laba_4_Aznabaev_Nadir_BPI_23_01.View
         public WindowEmployee()
         {
             InitializeComponent();
-            PersonViewModel Person = new PersonViewModel();
 
-            RoleViewModel Role = new RoleViewModel();
 
             DataContext = new PersonViewModel();
 
-            List<Role> roles = new List<Role>();
-            ObservableCollection<PersonDpo> persons = new ObservableCollection<PersonDpo>();
 
-            foreach (Role r in Role.ListRole)
-            {
-                roles.Add(r);
-            }
-            FindRole finder;
-            foreach (var p in Person.ListPerson)
-            {
-                finder = new FindRole(p.RoleId);
-                Role rol = roles.Find(new Predicate<Role>(finder.RolePredicate));
-                persons.Add(new PersonDpo
-                {
-                    Id = p.Id,
-                    Role = rol.NameRole,
-                    FirstName = p.FirstName,
-                    LastName = p.LastName,
-                    Birthday = p.Birthday
-                });
 
-            }
-            Employee.ItemsSource = persons;
         }
 
 

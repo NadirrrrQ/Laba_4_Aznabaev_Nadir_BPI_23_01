@@ -87,9 +87,11 @@ namespace Laba_4_Aznabaev_Nadir_BPI_23_01.ViewModel
                             Birthday = DateTime.Now
                         };
                         wnPerson.DataContext = per;
+
+
                         if (wnPerson.ShowDialog() == true)
                         {
-                            Role r = (Role)wnPerson.CbRole.SelectedValue;
+                            Role r = wnPerson.SelectedRole;
                             per.RoleName = r.NameRole;
                             ListPersonDpo.Add(per);
 
@@ -113,20 +115,25 @@ namespace Laba_4_Aznabaev_Nadir_BPI_23_01.ViewModel
                     {
                         Title = "Редактирование данных сотрудника",
                     };
-                    PersonDpo personDpo = SelectedPersonDpo; PersonDpo tempPerson = new PersonDpo(); tempPerson = personDpo.ShallowCopy(); wnPerson.DataContext = tempPerson;
+                    PersonDpo personDpo = SelectedPersonDpo; 
+                    PersonDpo tempPerson = new PersonDpo(); 
+                    tempPerson = personDpo.ShallowCopy(); 
+                    wnPerson.DataContext = tempPerson;
 
-                    //wnPerson.CbRole.ItemsSource = new ListRole();
+
+                    // wnPerson.CbRole.ItemsSource = new ListRole();
                     if (wnPerson.ShowDialog() == true)
                     {
-                        Role r = (Role)wnPerson.CbRole.SelectedValue;
+                        Role r = wnPerson.SelectedRole;
                         personDpo.RoleName = r.NameRole;
                         personDpo.FirstName = tempPerson.FirstName;
                         personDpo.LastName = tempPerson.LastName;
                         personDpo.Birthday = tempPerson.Birthday;
-                     //   FindPerson finder = new FindPerson(personDpo.Id);
+
+                        FindPerson finder = new FindPerson(personDpo.Id);
                         List<Person> listPerson = ListPerson.ToList(); 
-                       /// Person p = listPerson.Find(new Predicate<Person > (finder.PersonPredicate));
-                      //  p = p.CopyFromPersonDPO(personDpo);
+                        Person p = listPerson.Find(new Predicate<Person > (finder.PersonPredicate));
+                        p = p.CopyFromPersonDPO(personDpo);
                     }
                 }, (obj) => SelectedPersonDpo != null && ListPersonDpo.Count > 0));
             }

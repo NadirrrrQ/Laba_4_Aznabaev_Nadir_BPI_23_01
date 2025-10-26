@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Laba_4_Aznabaev_Nadir_BPI_23_01.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -26,6 +27,13 @@ namespace Laba_4_Aznabaev_Nadir_BPI_23_01
 
         private void Ok_Click(object sender, RoutedEventArgs e)
         {
+            var role = DataContext as Role;
+
+            if (role == null || string.IsNullOrWhiteSpace(role?.NameRole))
+            {
+                MessageBox.Show("Заполните все поля!");
+                return;
+            }
             DialogResult = true;
             Close();
         }

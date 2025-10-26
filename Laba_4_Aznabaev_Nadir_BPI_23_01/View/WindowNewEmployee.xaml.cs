@@ -21,18 +21,32 @@ namespace Laba_4_Aznabaev_Nadir_BPI_23_01
     /// </summary>
     public partial class WindowNewEmployee : Window
     {
+
+
         public Role SelectedRole => CbRole.SelectedItem as Role;
 
         public WindowNewEmployee()
         {
             InitializeComponent();
-            var vmRole = new RoleViewModel();
+
+            RoleViewModel vmRole = new RoleViewModel();
             CbRole.ItemsSource = vmRole.ListRole;
-            CbRole.SelectedIndex = 0;
         }
+
 
         private void Ok_Click(object sender, RoutedEventArgs e)
         {
+            var person = DataContext as PersonDpo;
+
+            if (person == null || string.IsNullOrWhiteSpace(person?.FirstName) ||
+        string.IsNullOrWhiteSpace(person?.LastName) ||
+        string.IsNullOrWhiteSpace(person?.RoleName))
+            {
+
+                MessageBox.Show("Заполните все поля!");
+                return;
+            }
+
             DialogResult = true;
             Close();
         }
@@ -40,6 +54,14 @@ namespace Laba_4_Aznabaev_Nadir_BPI_23_01
         {
             DialogResult = false;
             Close();
+        }
+
+        private void TextBox_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Space)
+            {
+                e.Handled = true;
+            }
         }
     }
 }

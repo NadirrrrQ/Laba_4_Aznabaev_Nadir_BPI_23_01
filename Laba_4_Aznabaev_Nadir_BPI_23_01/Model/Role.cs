@@ -27,6 +27,8 @@ namespace Laba_4_Aznabaev_Nadir_BPI_23_01.Model
 
         private string nameRole;
         public string NameRole { get { return nameRole; } set {nameRole = value; OnPropertyChanged("NameRole");}}
+
+
         public Role() { }
         public Role(int id, string nameRole)
         {

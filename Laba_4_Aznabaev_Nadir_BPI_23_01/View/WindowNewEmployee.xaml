@@ -8,35 +8,40 @@
         Title="WindowNewEmployee" Height="450" Width="800">
     <Grid Margin="10">
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <StackPanel Orientation="Vertical" Grid.Row="0">
-            <TextBlock Text="Фамилия:"/>
-            <TextBox Text="{Binding LastName, UpdateSourceTrigger=PropertyChanged}" />
-        </StackPanel>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
 
-        <StackPanel Orientation="Vertical" Grid.Row="1" Margin="0,8,0,0">
-            <TextBlock Text="Имя:"/>
-            <TextBox Text="{Binding FirstName, UpdateSourceTrigger=PropertyChanged}" />
-        </StackPanel>
+        <Label Grid.Row="0" Grid.Column="0" Content="Код:"/>
+        <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding Id}" IsReadOnly="True"/>
 
-        <StackPanel Orientation="Vertical" Grid.Row="2" Margin="0,8,0,0">
-            <TextBlock Text="Должность:"/>
-            <ComboBox x:Name="CbRole" DisplayMemberPath="NameRole" SelectedIndex="0"/>
-        </StackPanel>
+        <Label Grid.Row="1" Grid.Column="0" Content="Должность:"/>
+        <ComboBox x:Name="CbRole" Grid.Row="1" Grid.Column="1" 
+                  DisplayMemberPath="NameRole" SelectedValue="{Binding RoleName, UpdateSourceTrigger=PropertyChanged}" SelectedValuePath="NameRole"/>
+       
 
-        <StackPanel Orientation="Vertical" Grid.Row="3" Margin="0,8,0,0">
-            <TextBlock Text="Дата рождения:"/>
-            <DatePicker SelectedDate="{Binding Birthday}" />
-        </StackPanel>
+        <Label Grid.Row="2" Grid.Column="0" Content="Имя:"/>
+        <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding FirstName}"/>
 
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,12,0,0">
-            <Button Content="OK" Width="75" Margin="5" Click="Ok_Click"/>
-            <Button Content="Отмена" Width="75" Margin="5" Click="Cancel_Click"/>
+        <Label Grid.Row="3" Grid.Column="0" Content="Фамилия:"/>
+        <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding LastName}"/>
+
+        <Label Grid.Row="4" Grid.Column="0" Content="Дата рождения:"/>
+        <DatePicker Grid.Row="4" Grid.Column="1" SelectedDate="{Binding Birthday, UpdateSourceTrigger=PropertyChanged}"/>
+
+        <StackPanel Grid.Row="6" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button Content="Сохранить" Width="80" Margin="5" IsDefault="True" Click="Ok_Click"/>
+            <Button Content="Отмена" Width="80" Margin="5" IsCancel="True"/>
         </StackPanel>
     </Grid>
 </Window>

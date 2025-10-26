@@ -133,6 +133,8 @@ namespace Laba_4_Aznabaev_Nadir_BPI_23_01.ViewModel
                     if (wnRole.ShowDialog() == true)
                     {
                         role.NameRole = tempRole.NameRole;
+                        SelectedRole = role;
+
                     }
                 }, (obj) => SelectedRole != null && ListRole.Count > 0));
             }

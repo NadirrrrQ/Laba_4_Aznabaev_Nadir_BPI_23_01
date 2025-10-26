@@ -14,6 +14,18 @@ namespace Laba_4_Aznabaev_Nadir_BPI_23_01.Model
     {
         public int Id { get; set; }
 
+        private int _roleId;
+        public int RoleId
+        {
+            get { return _roleId; }
+            set
+            {
+                _roleId = value;
+                OnPropertyChanged("RoleId");
+            }
+        }
+
+
         private string _roleName;
 
         public string RoleName
@@ -59,7 +71,7 @@ namespace Laba_4_Aznabaev_Nadir_BPI_23_01.Model
 
         public PersonDpo() { }
 
-        public PersonDpo(int id, string roleName, string role, string firstName, string lastName, DateTime birthday)
+        public PersonDpo(int id, string roleName, string firstName, string lastName, DateTime birthday)
         {
             Id = id;
            // Role = role;
@@ -103,6 +115,22 @@ namespace Laba_4_Aznabaev_Nadir_BPI_23_01.Model
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+
+        protected bool SetProperty<T>(ref T field, T newValue, [CallerMemberName] string propertyName = null)
+        {
+            if (!Equals(field, newValue))
+            {
+                field = newValue;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+                return true;
+            }
+
+            return false;
+        }
+
+        private object selectedRole;
+
+        public object SelectedRole { get => selectedRole; set => SetProperty(ref selectedRole, value); }
     }
 
 }
