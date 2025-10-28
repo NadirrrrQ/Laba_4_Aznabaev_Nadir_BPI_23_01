@@ -28,7 +28,7 @@ namespace Laba_4_Aznabaev_Nadir_BPI_23_01.Model
 
         public Person CopyFromPersonDPO(PersonDpo personDpo)
         {
-            RoleViewModel vmRole = new RoleViewModel();
+            RoleViewModel vmRole = RoleViewModel.Instance;
             int roleId = 0;
 
             foreach (var r in vmRole.ListRole)

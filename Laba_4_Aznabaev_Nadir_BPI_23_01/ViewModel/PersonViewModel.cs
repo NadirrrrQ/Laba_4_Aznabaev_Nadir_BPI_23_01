@@ -28,6 +28,19 @@ namespace Laba_4_Aznabaev_Nadir_BPI_23_01.ViewModel
             }
 
         }
+
+        private static PersonViewModel _instance;
+        public static PersonViewModel Instance
+        {
+            get
+            {
+                if (_instance == null)
+                {
+                    _instance = new PersonViewModel();
+                }
+                return _instance;
+            }
+        }
         public ObservableCollection<Person> ListPerson { get; set; } = new ObservableCollection<Person>();
 
         public ObservableCollection<PersonDpo> ListPersonDpo { get; set; } = new ObservableCollection<PersonDpo>();
@@ -51,7 +64,8 @@ namespace Laba_4_Aznabaev_Nadir_BPI_23_01.ViewModel
         {
             foreach (var person in ListPerson)
             {
-                PersonDpo p = new PersonDpo(); p = p.CopyFromPerson(person);
+                PersonDpo p = new PersonDpo(); 
+                p = p.CopyFromPerson(person);
                 ListPersonDpo.Add(p);
             }
             return ListPersonDpo;
@@ -104,7 +118,8 @@ namespace Laba_4_Aznabaev_Nadir_BPI_23_01.ViewModel
             }
             
         }
-        private RelayCommand editPerson; public RelayCommand EditPerson
+        private RelayCommand editPerson;
+        public RelayCommand EditPerson
         {
             get
             {

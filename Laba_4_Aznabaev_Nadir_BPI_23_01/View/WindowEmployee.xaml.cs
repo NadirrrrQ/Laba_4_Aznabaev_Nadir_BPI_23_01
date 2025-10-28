@@ -28,7 +28,7 @@ namespace Laba_4_Aznabaev_Nadir_BPI_23_01.View
             InitializeComponent();
 
 
-            DataContext = new PersonViewModel();
+            DataContext = PersonViewModel.Instance;
 
 
 

@@ -90,7 +90,7 @@ namespace Laba_4_Aznabaev_Nadir_BPI_23_01.Model
         public PersonDpo CopyFromPerson(Person person)
         {
             PersonDpo perDpo = new PersonDpo(); 
-            RoleViewModel vmRole = new RoleViewModel(); 
+            RoleViewModel vmRole = RoleViewModel.Instance; 
             string role = string.Empty;
             foreach (var r in vmRole.ListRole)
             {

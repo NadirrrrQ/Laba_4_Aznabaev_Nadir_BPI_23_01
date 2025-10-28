@@ -27,7 +27,18 @@ namespace Laba_4_Aznabaev_Nadir_BPI_23_01.ViewModel
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-
+        private static RoleViewModel _instance;
+        public static RoleViewModel Instance
+        {
+            get
+            {
+                if (_instance == null)
+                {
+                    _instance = new RoleViewModel();
+                }
+                return _instance;
+            }
+        }
         public Role SelectedRole
         {
             get
@@ -45,26 +56,30 @@ namespace Laba_4_Aznabaev_Nadir_BPI_23_01.ViewModel
 
         public RoleViewModel()
         {
-            ListRole.Add(
-            new Role
+            if (_instance == null) 
             {
-                Id = 1,
-                NameRole = "Директор"
-            }
-            );
-            ListRole.Add(
-            new Role
-            {
-                Id = 2,
-                NameRole = "Бухгалтер"
-            }
-            );
-            ListRole.Add(new Role
-            {
-                Id = 3,
-                NameRole = "Менеджер"
+                ListRole.Add(
+                new Role
+                {
+                    Id = 1,
+                    NameRole = "Директор"
+                }
+                );
+                ListRole.Add(
+                new Role
+                {
+                    Id = 2,
+                    NameRole = "Бухгалтер"
+                }
+                );
+                ListRole.Add(new Role
+                {
+                    Id = 3,
+                    NameRole = "Менеджер"
 
-            });
+                });
+            }
+
         }
         public int MaxId()
         {

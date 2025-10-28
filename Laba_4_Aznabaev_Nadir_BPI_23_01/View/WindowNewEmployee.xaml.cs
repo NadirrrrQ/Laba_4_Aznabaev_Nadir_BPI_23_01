@@ -29,7 +29,7 @@ namespace Laba_4_Aznabaev_Nadir_BPI_23_01
         {
             InitializeComponent();
 
-            RoleViewModel vmRole = new RoleViewModel();
+            RoleViewModel vmRole = RoleViewModel.Instance;
             CbRole.ItemsSource = vmRole.ListRole;
         }
 

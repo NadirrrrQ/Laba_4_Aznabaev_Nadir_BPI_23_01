@@ -25,7 +25,7 @@ namespace Laba_4_Aznabaev_Nadir_BPI_23_01.View
             InitializeComponent();
            // RoleViewModel Role1 = new RoleViewModel();
           //  Role.ItemsSource = Role1.ListRole;
-            DataContext = new RoleViewModel();
+            DataContext = RoleViewModel.Instance;
         }
     }
 }
